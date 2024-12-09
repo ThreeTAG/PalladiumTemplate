@@ -1,6 +1,6 @@
 plugins {
     id "architectury-plugin" version "3.4-SNAPSHOT"
-    id "dev.architectury.loom" version "1.0-SNAPSHOT" apply false
+    id "dev.architectury.loom" version "1.5-SNAPSHOT" apply false
     id 'io.github.juuxel.loom-quiltflower' version '1.7.2' apply false
 }
 
@@ -43,7 +43,7 @@ allprojects {
 
         // ThreeTAG
         maven {
-            url 'https://repo.repsy.io/mvn/lucraft/threetag'
+            url 'https://maven.threetag.net'
         }
 
         // Parchment
@@ -53,6 +53,53 @@ allprojects {
                 includeGroup 'org.parchmentmc.data'
             }
         }
+
+        // Forge Config API Port
+        maven {
+            name = "Fuzs Mod Resources"
+            url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/"
+        }
+
+        // Modrinth
+        maven {
+            url "https://api.modrinth.com/maven"
+        }
+
+        // Player Animator
+        maven {
+            name "KosmX's maven"
+            url 'https://maven.kosmx.dev/'
+        }
+
+        // Gecko Lib
+        maven {
+            name = 'Gecko Lib'
+            url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        }
+
+        // Trinkets
+        maven {
+            url "https://maven.terraformersmc.com/releases/"
+        }
+
+        // KubeJS / Rhino
+        maven {
+            url = 'https://maven.saps.dev/minecraft'
+            content {
+                includeGroup 'dev.latvian.mods'
+            }
+        }
+
+        // Cardinal Components
+        maven {
+            name = 'Ladysnake Mods'
+            url = 'https://maven.ladysnake.org/releases'
+        }
+
+        // Porting Lib
+        maven { url = "https://mvn.devos.one/snapshots/" }
+
+        maven { url 'https://jitpack.io' }
     }
 
     tasks.withType(JavaCompile) {

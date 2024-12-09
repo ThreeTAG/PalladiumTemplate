@@ -44,8 +44,9 @@ configurations {
 
 dependencies {
     forge "net.minecraftforge:forge:${rootProject.forge_version}"
-    modApi "net.threetag:PalladiumCore-forge:${rootProject.palladiumcore_version}"
-    include "net.threetag:PalladiumCore-forge:${rootProject.palladiumcore_version}"
+    modApi("net.threetag:palladium-forge:${rootProject.palladium_version}") {
+        exclude group: "software.bernie.geckolib"
+    }
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
@@ -70,18 +71,17 @@ shadowJar {
     exclude "architectury.common.json"
 
     configurations = [project.configurations.shadowCommon]
-    classifier "dev-shadow"
+    archiveClassifier = "dev-shadow"
 }
 
 remapJar {
     input.set shadowJar.archiveFile
     dependsOn shadowJar
-    classifier null
     archiveClassifier = 'forge'
 }
 
 jar {
-    classifier "dev"
+    archiveClassifier = "dev"
 }
 
 sourcesJar {
