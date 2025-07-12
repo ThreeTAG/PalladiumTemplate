@@ -84,7 +84,7 @@ allprojects {
 
         // KubeJS / Rhino
         maven {
-            url = 'https://maven.saps.dev/minecraft'
+            url = 'https://maven.latvian.dev/releases'
             content {
                 includeGroup 'dev.latvian.mods'
             }
@@ -98,6 +98,14 @@ allprojects {
 
         // Porting Lib
         maven { url = "https://mvn.devos.one/snapshots/" }
+
+        // ReachEntityAttributes
+        maven {
+            url = 'https://maven.jamieswhiteshirt.com/libs-release'
+            content {
+                includeGroup 'com.jamieswhiteshirt'
+            }
+        }
 
         maven { url 'https://jitpack.io' }
     }
