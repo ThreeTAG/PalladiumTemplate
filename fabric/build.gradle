@@ -31,10 +31,31 @@ configurations {
 dependencies {
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
     modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
-    modApi "net.threetag:palladium-fabric:${rootProject.palladium_version}"
+    modApi("net.threetag:palladium-fabric:${rootProject.palladium_version}") {
+        exclude group: "maven.modrinth", module: "sodium"
+    }
+
+    // GeckoLib
+    modImplementation("software.bernie.geckolib:geckolib-fabric-1.20.1:${rootProject.geckolib_version}")
+
+    // PortingLib Stuff
+    implementation(annotationProcessor("io.github.llamalad7:mixinextras-common:0.2.0"))
+    implementation(include("io.github.llamalad7:mixinextras-fabric:0.2.0"))
+    modImplementation(include("io.github.fabricators_of_create.Porting-Lib:attributes:${rootProject.portinglib_version}", {
+        exclude group: "com.github.llamalad7.mixinextras"
+    }))
+
+    // KubeJS
+    modImplementation "dev.latvian.mods:kubejs-fabric:${rootProject.kubejs_version}"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
+}
+
+configurations.all {
+    resolutionStrategy {
+        force "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+    }
 }
 
 processResources {
@@ -53,6 +74,7 @@ processResources {
 
 sourceSets.main.resources {
     srcDir project(":forge").file("src/generated/resources").absolutePath
+    exclude '**/data/forge/*'
 }
 
 shadowJar {

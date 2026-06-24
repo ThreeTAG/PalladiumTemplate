@@ -48,6 +48,18 @@ dependencies {
         exclude group: "software.bernie.geckolib"
     }
 
+    // GeckoLib
+    implementation("com.eliotlash.mclib:mclib:20")
+    forgeRuntimeLibrary("com.eliotlash.mclib:mclib:20")
+    modApi("software.bernie.geckolib:geckolib-forge-1.20.1:${rootProject.geckolib_version}")
+
+    // KubeJS
+    modImplementation "dev.latvian.mods:kubejs-forge:${rootProject.kubejs_version}"
+
+    // Pehkui
+    modCompileOnly "com.github.Virtuoel:Pehkui:${rootProject.pehkui_forge_version}"
+    modApi("com.github.Virtuoel:Pehkui:${pehkui_forge_version}")
+
     // Mixin Extras
     implementation(annotationProcessor("io.github.llamalad7:mixinextras-common:0.2.0"))
     implementation(include("io.github.llamalad7:mixinextras-forge:0.2.0"))

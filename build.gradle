@@ -1,6 +1,6 @@
 plugins {
     id "architectury-plugin" version "3.4-SNAPSHOT"
-    id "dev.architectury.loom" version "1.5-SNAPSHOT" apply false
+    id "dev.architectury.loom" version "1.9-SNAPSHOT" apply false
     id 'io.github.juuxel.loom-quiltflower' version '1.7.2' apply false
 }
 
@@ -46,6 +46,23 @@ allprojects {
             url 'https://maven.threetag.net'
         }
 
+        maven {
+            // location of the maven that hosts JEI files before January 2023
+            name = "Progwml6's maven"
+            url = "https://dvs1.progwml6.com/files/maven/"
+        }
+        maven {
+            // location of the maven that hosts JEI files since January 2023
+            name = "Jared's maven"
+            url = "https://maven.blamejared.com/"
+        }
+        maven {
+            // location of a maven mirror for JEI files, as a fallback
+            name = "ModMaven"
+            url = "https://modmaven.dev"
+            content { excludeGroup("net.fabricmc.fabric-api") }
+        }
+
         // Parchment
         maven {
             url = 'https://maven.parchmentmc.net/'
@@ -58,6 +75,12 @@ allprojects {
         maven {
             name = "Fuzs Mod Resources"
             url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/"
+        }
+
+        // Devos
+        maven {
+            name = "Devos"
+            url = "https://mvn.devos.one/releases/"
         }
 
         // Modrinth

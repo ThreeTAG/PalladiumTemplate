@@ -10,7 +10,21 @@ dependencies {
     // We depend on fabric loader here to use the fabric @Environment annotations and get the mixin dependencies
     // Do NOT use other classes from fabric loader
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
-    modApi "net.threetag:palladium-common:${rootProject.palladium_version}"
+    modApi("net.threetag:palladium-common:${rootProject.palladium_version}") {
+        exclude group: "maven.modrinth", module: "sodium"
+    }
+
+    // GeckoLib
+    modCompileOnly("software.bernie.geckolib:geckolib-forge-1.20.1:${rootProject.geckolib_version}")
+    implementation("com.eliotlash.mclib:mclib:20")
+
+    // JEI
+    modCompileOnly "mezz.jei:jei-${rootProject.minecraft_version}-common-api:${rootProject.jei_version}"
+
+    // Pehkui
+    modApi("com.github.Virtuoel:Pehkui:${rootProject.pehkui_fabric_version}", {
+        exclude group: "net.fabricmc.fabric-api"
+    })
 }
 
 publishing {
