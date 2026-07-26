@@ -28,6 +28,25 @@ sourceSets.main.resources {
 
 repositories {
     // Add here additional repositories if required by some of the dependencies below.
+
+    // PlayerAnimationLibrary
+    maven {
+        name = "RedlanceMinecraft"
+        url = "https://repo.redlance.org/public"
+    }
+
+    // Modrinth
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
 }
 
 base {
@@ -110,9 +129,21 @@ neoForge {
 // "optional", meaning it will not be pulled by dependents of this mod.
 configurations {
     runtimeClasspath.extendsFrom localRuntime
+    all {
+        resolutionStrategy.force 'com.google.code.gson:gson:2.13.2'
+        resolutionStrategy.force 'io.netty:netty-buffer:4.2.7.Final'
+        resolutionStrategy.force 'org.slf4j:slf4j-api:2.0.16'
+        resolutionStrategy.force 'org.joml:joml:1.10.8'
+    }
 }
 
 dependencies {
+    // Palladium
+    implementation "maven.modrinth:palladium-previews:${palladium_version}"
+
+    // Player Animation Library
+    implementation("com.zigythebird.playeranim:PlayerAnimationLibNeo:$player_animation_lib_version")
+
     // Example optional mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"

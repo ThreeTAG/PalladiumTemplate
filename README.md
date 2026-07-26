@@ -21,7 +21,7 @@ https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
 
 Additional Resources: 
 ==========
-Palladium Documentation: https://docs.threetag.net/
-Palladium Discord: https://discord.com/invite/GATzmppJms
+Palladium Documentation: https://docs.threetag.net/  
+Palladium Discord: https://discord.com/invite/GATzmppJms  
 Community Documentation: https://docs.neoforged.net/  
 NeoForged Discord: https://discord.neoforged.net/
